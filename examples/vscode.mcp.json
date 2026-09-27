@@ -1,0 +1,12 @@
+{
+  "inputs": [
+    { "type": "promptString", "id": "tgget-token", "description": "TGGET access token", "password": true }
+  ],
+  "servers": {
+    "tgget": {
+      "type": "http",
+      "url": "https://tgget.io/mcp",
+      "headers": { "Authorization": "Bearer ${input:tgget-token}" }
+    }
+  }
+}

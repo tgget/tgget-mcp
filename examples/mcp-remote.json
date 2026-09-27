@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "tgget": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://tgget.io/mcp", "--header", "Authorization: Bearer <token>"]
+    }
+  }
+}

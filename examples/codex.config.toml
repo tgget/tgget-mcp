@@ -1,0 +1,3 @@
+[mcp_servers.tgget]
+url = "https://tgget.io/mcp"
+bearer_token_env_var = "TGGET_TOKEN"

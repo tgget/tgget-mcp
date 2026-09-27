@@ -1,0 +1,4 @@
+# Registry signing key and anything that may hold a token
+*.pem
+.env
+.DS_Store

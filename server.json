@@ -1,0 +1,50 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.tgget/niche-research",
+  "title": "TGGET Niche Research",
+  "description": "Niche research for app and online business ideas: search demand, competitors, AI report.",
+  "version": "1.0.0",
+  "repository": {
+    "url": "https://github.com/tgget/tgget-mcp",
+    "source": "github"
+  },
+  "websiteUrl": "https://tgget.io/docs/api",
+  "icons": [
+    {
+      "src": "https://tgget.io/apple-touch-icon.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "180x180"
+      ]
+    },
+    {
+      "src": "https://tgget.io/favicon.svg",
+      "mimeType": "image/svg+xml",
+      "sizes": [
+        "any"
+      ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://tgget.io/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Personal access token of a TGGET account, sent as a Bearer token.",
+          "isRequired": true,
+          "isSecret": true,
+          "value": "Bearer {token}",
+          "variables": {
+            "token": {
+              "description": "Token created at tgget.io in Settings, section API and AI assistants.",
+              "isRequired": true,
+              "isSecret": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
