@@ -9,6 +9,8 @@ Give it a search phrase or a description of an idea in your own words. It return
 - Name in the [MCP Registry](https://registry.modelcontextprotocol.io/v0/servers?search=tgget): `io.tgget/niche-research`
 - Documentation: [tgget.io/docs/api](https://tgget.io/docs/api)
 
+![A niche report: verdict and the factors behind it](assets/screenshots/niche-report.png)
+
 ## What you can ask
 
 - "Validate this idea: an app that reminds you to water plants and explains how to care for them."
