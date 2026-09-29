@@ -2,25 +2,24 @@
 
 Remote [Model Context Protocol](https://modelcontextprotocol.io) server of [TGGET](https://tgget.io), a niche research tool for mobile apps and online services. It lets an AI assistant check an idea against measured data instead of guessing from a description.
 
-Give it a search phrase or a description of an idea in your own words. It returns monthly search demand, sub-niches, competitor sites from search results, App Store apps with what their users complain about, community signals and a final report with a go, maybe or no verdict.
+Give it a search phrase or a description of an idea in your own words. It returns monthly search demand, sub-niches, competitor sites from search results, App Store apps with what their users complain about, community signals and a final report with a verdict: worth building, needs validation or no niche. The verdict is computed by rules from five measured factors, so the same numbers always give the same answer; the language model only explains it.
 
 - Endpoint: `https://tgget.io/mcp` (Streamable HTTP)
 - Authentication: personal access token, sent as a Bearer token
-- Registry name: `io.tgget/niche-research`
+- Name in the [MCP Registry](https://registry.modelcontextprotocol.io/v0/servers?search=tgget): `io.tgget/niche-research`
 - Documentation: [tgget.io/docs/api](https://tgget.io/docs/api)
-
-[Русская версия](README.ru.md)
 
 ## What you can ask
 
 - "Validate this idea: an app that reminds you to water plants and explains how to care for them."
 - "Is there demand for an expense tracker for couples? Who are the competitors?"
 - "Research the niche 'invoice generator' and give me the report as Markdown."
-- "Rebuild the report of my last research in Russian."
+- "Compare my last three researches and tell me which idea to start with."
+- "Follow the niche of my research about habit trackers and show what changed since last month."
 
 ## Getting a token
 
-1. Create an account at [tgget.io](https://tgget.io) and confirm your email.
+1. Create an account at [tgget.io](https://tgget.io) or in the [Android app](https://play.google.com/store/apps/details?id=io.tgget.analytics) and confirm your email. A free account is enough.
 2. Open Settings, section "API and AI assistants", and create a token. It is shown once.
 
 Tokens expire after a year and are revoked when you change your password or close your sessions. An account holds up to five tokens.
@@ -103,8 +102,13 @@ Use the [mcp-remote](https://www.npmjs.com/package/mcp-remote) bridge:
 | `get_report` | The final niche report: verdict, customer pains, MVP, napkin economics, SEO and ASO plans, name options, landing page draft, distribution channels, validation steps and risks. | `id` (required), `format` (`markdown` or `json`) |
 | `list_research` | The most recent researches of the account, newest first. | `limit` (1 to 50) |
 | `run_signal` | Adds one check to a finished research: competitors for a phrase, demand history, App Store, reviews, community signals, paid search metrics, or a rebuilt report. | `id`, `kind` (required), `phrase`, `locale` |
+| `compare_research` | Puts two to five finished researches side by side and marks the better value of every measure. The marks come from the numbers, not from the language model. | `ids` (required) |
+| `follow_niche` | Starts following the niche of a finished research that has a report: it is scanned anew every month and a digest of what changed is sent to the account. Monthly checks do not spend researches. | `research_id` (required) |
+| `list_projects` | The niches the account follows, with the latest numbers and the date of the next check. | `limit` (1 to 50) |
+| `get_project` | A followed niche with the history of its checks and what changed since the previous one. | `id` (required) |
+| `update_project` | Pauses a followed niche, follows it again or stops following it. | `id`, `status` (`active`, `paused` or `deleted`) (required) |
 
-`locale` is `en` or `ru` and sets the language of the conclusions and the report. It defaults to the interface language of the account. Texts meant for a site or an app store are always written in the language of the market.
+`locale` sets the language of the conclusions and the report; `en` is the one available now. The market is chosen by the language of the phrase: search demand is measured in the country of that language. Texts meant for a site or an app store are always written in the language of the market.
 
 ### Resources and prompt
 
@@ -125,7 +129,8 @@ Research runs in the background and takes a few minutes.
 ## Limits and privacy
 
 - A research is counted when it starts. Checks added to an existing research with `run_signal` are free.
-- The free plan includes three researches to start and one more every 30 days. Paid plans are on the [plans page](https://tgget.io/plans).
+- The free plan includes three researches to start and one more every 30 days. Paid plans are on the [plans page](https://tgget.io/plans) and are bought in the mobile app; the same account works everywhere.
+- A free account follows one niche, Starter two, Pro ten.
 - Researches made on the free plan are public: the result may be listed in the open [niche catalog](https://tgget.io/niches). The catalog shows the researched phrase and its findings, never the description you typed. Researches on paid plans stay private.
 - The API and the MCP server share a limit of 60 requests per minute.
 - Search interest is evidence, not a customer count. Treat the verdict as a starting point for your own validation.
@@ -136,6 +141,9 @@ Research runs in the background and takes a few minutes.
 - [Business idea validation](https://tgget.io/validate-business-idea)
 - [Niche finder tool](https://tgget.io/niche-finder-tool)
 - [Open niche catalog](https://tgget.io/niches)
+- [App ideas with measured demand](https://tgget.io/app-ideas)
+- [Micro SaaS ideas with measured demand](https://tgget.io/micro-saas-ideas)
+- [Android app on Google Play](https://play.google.com/store/apps/details?id=io.tgget.analytics)
 - [API and MCP documentation](https://tgget.io/docs/api)
 - [Contact](https://tgget.io/contact)
 
