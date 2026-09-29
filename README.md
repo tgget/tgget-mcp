@@ -5,7 +5,7 @@ Remote [Model Context Protocol](https://modelcontextprotocol.io) server of [TGGE
 Give it a search phrase or a description of an idea in your own words. It returns monthly search demand, sub-niches, competitor sites from search results, App Store apps with what their users complain about, community signals and a final report with a verdict: worth building, needs validation or no niche. The verdict is computed by rules from five measured factors, so the same numbers always give the same answer; the language model only explains it.
 
 - Endpoint: `https://tgget.io/mcp` (Streamable HTTP)
-- Authentication: personal access token, sent as a Bearer token
+- Authentication: personal access token, sent as a Bearer token. The server tells what it is and lists its tools without a token; every call needs one
 - Name in the [MCP Registry](https://registry.modelcontextprotocol.io/v0/servers?search=tgget): `io.tgget/niche-research`
 - Documentation: [tgget.io/docs/api](https://tgget.io/docs/api)
 
